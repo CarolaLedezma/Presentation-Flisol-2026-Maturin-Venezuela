@@ -1,0 +1,58 @@
+# 1. Base Image: Rocker Tidyverse is the gold standard for R-based containers
+FROM rocker/tidyverse:4.3.2
+
+# 2. Metadata and Permissions: Setting root user for system-level installations
+LABEL maintainer="A. Carolina Ledezma-Carrizalez"
+USER root
+
+# 3. System Dependencies: Grouped for layer efficiency
+# Added support for modern font rendering (harfbuzz, fribidi) and image processing
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    fonts-roboto \
+    fonts-liberation \
+    fontconfig && \
+    fc-cache -f -v \    
+    libcurl4-openssl-dev \
+    libssl-dev \
+    libxml2-dev \
+    zlib1g-dev \
+    libmagick++-dev \
+    libfontconfig1-dev \
+    libfreetype6-dev \
+    libharfbuzz-dev \
+    libfribidi-dev \
+    libgdal-dev \
+    libgeos-dev \
+    libproj-dev \
+    libsqlite3-dev \
+    libudunits2-dev \
+    libpng-dev \
+    libtiff5-dev \
+    libjpeg-dev \
+    pandoc \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# 4. Quarto Installation: Downloading and installing the latest Debian package
+RUN curl -LO https://quarto.org/download/latest/quarto-linux-amd64.deb && \
+    dpkg -i quarto-linux-amd64.deb && \
+    rm quarto-linux-amd64.deb
+
+# 5. Updated Working Directory to match the Rocker environment
+WORKDIR /home/rstudio/presentacion-flisol
+
+# 6. R Package Installation (Ensure ggtext is there for your titles)
+RUN R -e "install.packages(c('sf','rmapshaper','rnaturalearth','stringr','geomtexpath','gdtools','patchwork','rcartocolor','scico','tidyverse','janitor','glue','ggimage','lubridate','ploty', 'shiny', 'bslib','ggplot2','dplyr','readr', 'ggiraph', 'ggstream', 'languageserver', 'zoo', 'gdtools','ggforce','ragg','prismatic', 'ggtext','here','knitr','rmarkdown'), repos='https://cloud.r-project.org/')"
+
+# 7. Copy your organized local files
+COPY . .
+
+# 8. Permissions (Crucial for RStudio images)
+RUN chown -R rstudio:rstudio /home/rstudio/presentacion-flisol
+
+# 9. Render the specific file name we found
+RUN quarto render slides.qmd --to html
+
+# 10. Execution
+EXPOSE 3838
+CMD ["R", "-e", "shiny::runApp('/home/rstudio/presentacion-flisol', host='0.0.0.0', port=3838)"]
