@@ -9,7 +9,7 @@ Presentation-Flisol-2026-Maturin-Venezuela
 
 ## Slides: [Presentacion](https://carolaledezma.github.io/Presentation-Flisol-2026-Maturin-Venezuela/index.html#/title-slide)
 
-# FLISoL 2026: Adiós PowerBI, Hola R, ggplot2 y Shiny (Maturín, Venezuela) 🧬📊
+# FLISoL 2026: Adiós PowerBI, Hola R, ggplot2 y Shiny (Maturín, Venezuela) 📊
 
 Este repositorio contiene la presentación interactiva y los recursos utilizados en mi charla durante el **Festival Latinoamericano de Instalación de Software Libre (FLISoL) 2026** en la ciudad de Maturín.
 
