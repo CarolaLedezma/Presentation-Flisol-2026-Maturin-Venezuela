@@ -31,5 +31,12 @@ Este repositorio contiene la presentación interactiva y los recursos utilizados
 * **Filosofía:** Uso de las libertades 0 (uso) y 1 (mejora) para adaptar conocimiento global a contextos locales.
 
 ---
+Aquí puedes ver un resumen de mi participación en el FLISoL Maturín 2026, incluyendo momentos de la ponencia y la comunidad.
+
+| 🇪🇸 Español | 🇺🇸 English |
+| :--- | :--- |
+| ▶️ **[Ver en YouTube](https://youtu.be/JC024ih3wpk?si=PtsC5yv8GE-TPr63)** | ▶️ **[Watch on YouTube](https://youtu.be/JC024ih3wpk?si=PtsC5yv8GE-TPr63)** |
+
 🔗 **[Ver Presentación Interactiva](https://carolaledezma.github.io/Presentation-Flisol-2026-Maturin-Venezuela/index.html#/title-slide)**
+
 *Presentado por: Aurora Carolina Ledezma Carrizalez*
